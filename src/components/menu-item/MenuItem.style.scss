@@ -1,0 +1,77 @@
+.info{
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #111;
+    transform: translate(-50%,-50%);
+    // background-color: rgba($color: #fff, $alpha: 0.5);
+    background-color: #f1f1f1;
+    border: .5px solid #111;
+    opacity: 0.5;
+}
+
+.card{
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.card:hover{
+    cursor: pointer;
+
+    & img{
+        transform: scale(1.1);
+        transition: transform 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+        cursor: pointer;
+    }
+
+    & .info{
+        opacity: 0.9;
+    }
+}
+
+
+@media (max-width:414px){
+    .card img{
+        width: 300px !important;
+    }
+}
+
+@media (min-width:768px) and (max-width:1023px){
+    .card:nth-child(1) img{
+        width: 200px !important;
+    }
+    .card:nth-child(2) img{
+        width: 200px !important;
+    }
+    .card:nth-child(3) img{
+        width: 200px !important;
+    }
+    .card:nth-child(4) img{
+        width: 300px !important;
+    }
+    .card:nth-child(5) img{
+        width: 300px !important;
+    }
+}
+
+@media (min-width:1024px) and (max-width:1366px){
+    .card:nth-child(1) img{
+        width: 300px !important;
+    }
+    .card:nth-child(2) img{
+        width: 300px !important;
+    }
+    .card:nth-child(3) img{
+        width: 300px !important;
+    }
+    .card:nth-child(4) img{
+        width: 400px !important;
+    }
+    .card:nth-child(5) img{
+        width: 400px !important;
+    }
+}
