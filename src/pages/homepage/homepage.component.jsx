@@ -3,7 +3,7 @@ import './homepage.style.scss';
 import Directory from '../../components/directory/Directory.component';
 
 
-const Homapage = () => {
+const Homepage = () => {
     return (
         <div>
             <Directory />
@@ -11,4 +11,4 @@ const Homapage = () => {
     )
 }
 
-export default Homapage;
+export default Homepage;
