@@ -2,8 +2,9 @@ import React from 'react';
 import './Header.style.scss';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo} from '../../assets/crown.svg';
+import { auth } from '../firebase/firebase.utility';
 
-const Header = () => {
+const Header = ({currentUser}) => {
     return(
         <div>
             <header className="bg-light" id="scroll">
@@ -16,16 +17,31 @@ const Header = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul className="navbar-nav ml-auto">
-                    <li className="nav-item">
+                    <li className="nav-item mx-2">
                         <Link to="/shop" className="nav-link active_page">
                             Shop
                         </Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item mx-2">
                         <Link to="/contact" className="nav-link">
                             Contact
                         </Link>
-                    </li>   
+                    </li>  
+                    {
+                        currentUser ?
+                        <li className="nav-item mx-2">
+                        <div onClick={() => auth.signOut()} className="nav-link">
+                            Sign Out
+                        </div>
+                        </li> 
+                        :
+                        <li className="nav-item mx-2">
+                        <Link to="/signin" className="nav-link">
+                            Sign In
+                        </Link>
+                        </li>
+
+                    }   
                     </ul>
                 </div>  
                 </nav>
