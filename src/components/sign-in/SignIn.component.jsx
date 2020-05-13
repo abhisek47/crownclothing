@@ -1,23 +1,30 @@
 import React from 'react'
 import './SignIn.style.scss';
-import { signInWithGoogle } from '../firebase/firebase.utility';
+import { auth, signInWithGoogle } from '../firebase/firebase.utility';
 
 class SignIn extends React.Component {
     constructor(props) {
         super(props)
     
         this.state = {
-             email: 'abhisek529@gmail.com',
-             password: 'paul@54321'
+             email: '',
+             password: ''
         }
     }
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
-        this.setState({
-            email:'',
-            password:''
-        })
+        const {email,password} = this.state;
+        try{
+            await auth.signInWithEmailAndPassword(email,password);
+            this.setState({
+                email:'',
+                password:''
+            })
+        } catch (error){
+            console.log(error);
+        }
+        
     }
 
     handleChange = (event) => {
@@ -28,6 +35,7 @@ class SignIn extends React.Component {
     }
 
     render(){
+        const {email,password} = this.state;
         return(
             <div className="mt-5">
                 <h4>I already have an account</h4>
@@ -37,9 +45,10 @@ class SignIn extends React.Component {
                         <label>Email</label>
                         <input 
                         type="email" 
+                        name="email"
                         className="form-control" 
                         placeholder="Enter email" 
-                        value={this.state.email}
+                        value={email}
                         onChange={this.handleChange}
                         required/>
                     </div>
@@ -47,9 +56,10 @@ class SignIn extends React.Component {
                         <label>Password</label>
                         <input 
                         type="password" 
+                        name="password"
                         className="form-control" 
                         placeholder="Enter password" 
-                        value={this.state.password}
+                        value={password}
                         onChange={this.handleChange} 
                         required/>
                     </div>
