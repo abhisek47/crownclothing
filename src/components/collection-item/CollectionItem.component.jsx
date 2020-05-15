@@ -5,7 +5,7 @@ const CollectionItem = ({name, imageUrl, price}) => {
     return(
         <div className="item">
             <div className="photo" style={{backgroundImage:`url(${imageUrl})`}}>
-                <a href="#" className="btn btn-primary btn-block mx-auto">Add to cart</a>
+                <button className="btn btn-primary btn-block mx-auto">Add to cart</button>
             </div>
             <div className="content m-2">
                 <p>{name}</p>

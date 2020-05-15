@@ -5,10 +5,10 @@ import { withRouter } from 'react-router-dom';
 const MenuItem = ({ title, imageUrl, history, match, linkUrl }) => {
     return (
         <div 
-        className="card mx-auto my-4" 
+        className="card mx-auto mt-4" 
         onClick={() => history.push(`${match.url}${linkUrl}`)}
         >
-            <img src={imageUrl} className="card-img-top"/>
+            <img src={imageUrl} alt="item" className="card-img-top"/>
             <div className="info">
                 <h4 className='text-uppercase'>{title}</h4>
                 <p>Shop Now</p>

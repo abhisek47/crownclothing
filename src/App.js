@@ -1,10 +1,12 @@
 import React from 'react';
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import ShopPage from './pages/shop/shop.component';
 import Homepage from './pages/homepage/homepage.component';
 import Header from './components/header/Header.component';
 import Form from './pages/form/form.component';
 import { auth , createUserProfileDocument } from './components/firebase/firebase.utility';
+import Footer from './components/footer/Footer.component';
+
 
 
 class App extends React.Component {
@@ -54,10 +56,12 @@ class App extends React.Component {
           <Route  path="/shop" component={ShopPage} />
           <Route  path="/signin" component={Form} />
         </Switch>
+        <Footer />
       </div>
     );
   }
   
 }
+
 
 export default App;

@@ -1,16 +1,20 @@
 import React from 'react';
 import './Header.style.scss';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo} from '../../assets/crown.svg';
 import { auth } from '../firebase/firebase.utility';
+import CartItem from '../cart-icon/CartIcon.component';
+import CartDropdown from '../cart-dropdown/CartDropdown.component';
+import { connect } from 'react-redux';
 
-const Header = ({currentUser}) => {
+
+const Header = ({currentUser, hidden}) => {
+    
     return(
         <div>
             <header className="bg-light" id="scroll">
                 <nav className="navbar navbar-expand-md navbar-light container py-3">
                     <Link to="/" className="navbar-brand font-weight-bold text-uppercase">
-                        <Logo />
+                        <img src="https://img.icons8.com/color/48/000000/crown.png" alt="logo"/>
                     </Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span className="navbar-toggler-icon"></span>
@@ -41,13 +45,25 @@ const Header = ({currentUser}) => {
                         </Link>
                         </li>
 
-                    }   
+                    } 
+                    <li className="nav-item mx-2">
+                        <CartItem/>
+                    </li>  
                     </ul>
-                </div>  
+                </div>    
+                    {
+                        hidden ? 
+                        null :
+                        <CartDropdown /> 
+                    }        
+                    
                 </nav>
             </header>
         </div>
     )
 }
 
-export default Header;
+const mapStateToProps = ({cart: {hidden}}) => ({
+    hidden
+})
+export default connect(mapStateToProps)(Header);
